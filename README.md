@@ -8,9 +8,9 @@ Features
 * Ability to open and close side doors
 * 2x Passenger FFV
 * Different Loadouts:
-* - Unarmed
-* - Rockets/Cannon
-* - Hellifire w/ 4x AGM-114N (SAL2) * 4x AGM-114L
+  - Unarmed
+  - Rockets/Cannon
+  - Hellifire w/ 4x AGM-114N (SAL2) * 4x AGM-114L
 * Co-pilot laser designator
 * Pilot/Co-Pilot Cockpit FLIR MFD 
 * Sling Loading
