@@ -54,13 +54,13 @@ class CfgVehicles
 		selectionVRotorStill = "mala vrtule staticka";
 		selectionVRotorMove = "mala vrtule blur";
 		
-		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
+		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Unarmed_Metric.hpp"
 
 		tf_RadioType_api = "tf_anarc210";
 		tf_hasLRradio_api = 1; // 1 = true, 0 = false
 		tf_isolatedAmount_api = 0.2;			
 		
-		displayname = AW159 Wildcat (Armed);
+		displayname = AW159 Wildcat (Base);
 		class Library {libTextDesc = $STR_BAF_CFGVEHICLES_AW159_LYNX_BAF_LIBRARY0;}; 
 		
 		simulation = "HelicopterX";		
@@ -1679,19 +1679,19 @@ class CfgVehicles
 		};		
 	};
 ////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////AW159 Army Wildcat Unarmed/////////////////////////
+/////////////////////////////AW159 BAF Wildcat Unarmed//////////////////////////
 ////////////////////////////////////////////////////////////////////////////////	
-	class DEGA_Wildcat_Unarmed: DEGA_Wildcat_Base
+	class DEGA_Wildcat_Unarmed_BAF: DEGA_Wildcat_Base
 	{
 	    author = "Deltagamer";
         scope = 2;	
-		displayname = AW159 Army Wildcat (Unarmed);
+		displayname = AW159 BAF Wildcat (Unarmed);
 		hiddenSelections[] = {"camo1", "camo2"};
 		model = "\DEGA_Wildcats\AW159_BAF_unarmed";
 		picture = "\DEGA_Wildcats\data\UI\picture_lynx_unarmed_ca.paa";
 		icon = "\DEGA_Wildcats\data\UI\icon_lynx_unarmed_ca.paa";		
         hiddenSelectionsTextures[]={"\DEGA_Wildcats\data\lynx_base_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};
-		_generalMacro = "DEGA_Wildcat_Unarmed";			
+		_generalMacro = "DEGA_Wildcat_Unarmed_BAF";			
 		class Turrets: Turrets
 		{
 			class MainTurret: MainTurret {};
@@ -1700,18 +1700,18 @@ class CfgVehicles
 		};
 	};	
 ////////////////////////////////////////////////////////////////////////////////
-/////////////////////////AW159 Army Wildcat Hellfire Armed//////////////////////
+/////////////////////////AW159 BAF Wildcat Hellfire Armed///////////////////////
 ////////////////////////////////////////////////////////////////////////////////	
-	class DEGA_Wildcat_Hellfire_Armed: DEGA_Wildcat_Base
+	class DEGA_Wildcat_Hellfire_Armed_BAF: DEGA_Wildcat_Base
 	{
 	    author = "Deltagamer";
         scope = 2;	
-		displayname = AW159 Army Wildcat (Hellfire - Armed);
+		displayname = AW159 BAF Wildcat (Hellfire - Armed);
 		model = "\DEGA_Wildcats\AW159_BAF_Hellfire_armed";
 		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
 		icon = "\DEGA_Wildcats\data\UI\icon_lynx_ca.paa";
 		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
-		_generalMacro = "DEGA_Wildcat_Hellfire_Armed";
+		_generalMacro = "DEGA_Wildcat_Hellfire_Armed_BAF";
 		memoryPointLMissile = "missile_1";
  		memoryPointRMissile = "missile_2";			
 		hiddenSelections[] = {"camo1", "camo2"};
@@ -1728,21 +1728,99 @@ class CfgVehicles
 		};
 	};
 ////////////////////////////////////////////////////////////////////////////////
-//////////////////////////AW159 Army Wildcat Cannon Armed///////////////////////
+//////////////////////////AW159 BAF Wildcat Cannon Armed////////////////////////
 ////////////////////////////////////////////////////////////////////////////////	
-	class DEGA_Wildcat_Cannon_Armed: DEGA_Wildcat_Base
+	class DEGA_Wildcat_Cannon_Armed_BAF: DEGA_Wildcat_Base
 	{
 	    author = "Deltagamer";
         scope = 2;	
-		displayname = AW159 Army Wildcat (Cannon - Armed);
+		displayname = AW159 BAF Wildcat (Cannon - Armed);
 		model = "\DEGA_Wildcats\AW159_BAF_Cannon_armed";
 		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
 		icon = "\DEGA_Wildcats\data\UI\icon_lynx_ca.paa";
 		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
-		_generalMacro = "DEGA_Wildcat_Cannon_Armed";	
+		_generalMacro = "DEGA_Wildcat_Cannon_Armed_BAF";	
         selectionFireAnim = "zasleh";		
 		hiddenSelections[] = {"camo1", "camo2"};
         hiddenSelectionsTextures[]={"\DEGA_Wildcats\data\lynx_base_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};
+		class AnimationSources : AnimationSources
+		{
+			class ReloadMGAnim{source="reload";weapon="M621";};
+        };
+		weapons[] = {"Master_Arm_Safe_US_Helos_Kimi", "M621", "CRV7_PG_12rnd", "CMFlareLauncher"};
+		magazines[] = {"1200Rnd_20mm_M621", "12Rnd_CRV7", "120Rnd_CMFlare_Chaff_Magazine"};		
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret {};  	
+	        class CargoTurret_01: CargoTurret_01 {};
+	        class CargoTurret_02: CargoTurret_02 {};
+		};
+	};			
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////AW159 RDAF Wildcat Unarmed/////////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Unarmed_RDAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 RDAF Wildcat (Unarmed);
+		hiddenSelections[] = {"camo1", "camo2"};
+		model = "\DEGA_Wildcats\AW159_BAF_unarmed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_unarmed_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_unarmed_ca.paa";		
+        hiddenSelectionsTextures[]={"\DEGA_Wildcats\Skins\lynx_base_rdaf_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};
+		_generalMacro = "DEGA_Wildcat_Unarmed_RDAF";			
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret {};
+			class CargoTurret_01: CargoTurret_01 {};
+			class CargoTurret_02: CargoTurret_02 {};						
+		};
+	};	
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////AW159 RDAF Wildcat Hellfire Armed//////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Hellfire_Armed_RDAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 RDAF Wildcat (Hellfire - Armed);
+		model = "\DEGA_Wildcats\AW159_BAF_Hellfire_armed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_ca.paa";
+		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
+		_generalMacro = "DEGA_Wildcat_Hellfire_Armed_RDAF";
+		memoryPointLMissile = "missile_1";
+ 		memoryPointRMissile = "missile_2";			
+		hiddenSelections[] = {"camo1", "camo2"};
+        hiddenSelectionsTextures[]={"\DEGA_Wildcats\Skins\lynx_base_rdaf_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};			
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret //Gunner
+			{
+				weapons[] = {"Master_Arm_Safe_US_Helos_Kimi",  "Laserdesignator_mounted", "HellfireLauncherN", "HellfireLauncherL"};
+				magazines[] = {"Laserbatteries", "4Rnd_Hellfire_N", "4Rnd_Hellfire_L"};	
+	        };  	
+	        class CargoTurret_01: CargoTurret_01 {};
+	        class CargoTurret_02: CargoTurret_02 {};
+		};
+	};
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////////AW159 RDAF Wildcat Cannon Armed///////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Cannon_Armed_RDAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 RDAF Wildcat (Cannon - Armed);
+		model = "\DEGA_Wildcats\AW159_BAF_Cannon_armed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_ca.paa";
+		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
+		_generalMacro = "DEGA_Wildcat_Cannon_Armed_RDAF";	
+        selectionFireAnim = "zasleh";		
+		hiddenSelections[] = {"camo1", "camo2"};
+        hiddenSelectionsTextures[]={"\DEGA_Wildcats\Skins\lynx_base_rdaf_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};
 		class AnimationSources : AnimationSources
 		{
 			class ReloadMGAnim{source="reload";weapon="M621";};

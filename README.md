@@ -21,6 +21,8 @@ Features
 * Safety Switch
 * Turret Slaving
 * Different Fire mode for rockets
+* BAF versions
+* RDAF versions
 
 Whats Planned
 =========
@@ -32,6 +34,7 @@ Credits
 =============
 
 * [Kimi](https://forums.bistudio.com/user/828913-kimi-uy/)
+* [RavenDK](https://forums.bistudio.com/user/749751-ravendk/)
 
 
 Thanks to everyone above they have helped me out a lot! 
