@@ -4,9 +4,21 @@ class CfgPatches
 	{
 		units[] = 
 		{
-		    "DEGA_Wildcat_Unarmed",
-			"DEGA_Wildcat_Hellfire_Armed", 
-		    "DEGA_Wildcat_Cannon_Armed"
+		    "DEGA_Wildcat_Unarmed_BAF",
+			"DEGA_Wildcat_Hellfire_Armed_BAF", 
+		    "DEGA_Wildcat_Cannon_Armed_BAF",
+			
+		    "DEGA_Wildcat_Unarmed_RDAF",
+			"DEGA_Wildcat_Hellfire_Armed_RDAF", 
+		    "DEGA_Wildcat_Cannon_Armed_RDAF",		
+
+            "DEGA_Wildcat_Unarmed_Green_AAF",
+            "DEGA_Wildcat_Hellfire_Armed_Green_AAF",
+            "DEGA_Wildcat_Cannon_Armed_Green_AAF",
+
+            "DEGA_Wildcat_Unarmed_Digital_AAF",
+            "DEGA_Wildcat_Hellfire_Armed_Digital_AAF",
+            "DEGA_Wildcat_Cannon_Armed_Digital_AAF"				
 		};
 		weapons[] = {};
 		requiredVersion = 1;

@@ -120,8 +120,8 @@ class CfgVehicles
 		memoryPointGun = "muzzle_1";
 
 		// Guns and equipment
-//		weapons[] = {"FFARLauncher_12", "gatling_20mm", "CMFlareLauncher"};
-//		magazines[] = {"12Rnd_FFAR","1000Rnd_20mm_shells","120Rnd_CMFlare_Chaff_Magazine"};
+		weapons[] = {"CMFlareLauncher"};
+		magazines[] = {"120Rnd_CMFlare_Chaff_Magazine"};
 		HeadAimDown = -5.2;
 
 		selectionFireAnim = "zasleh";
@@ -266,7 +266,7 @@ class CfgVehicles
 				radius=3.7;
 				onlyForplayer=false;
                 priority = 0;					
-				condition="this doorPhase ""CargoDoorR"" < 0.5 AND (alive this)";
+				condition="this doorPhase ""CargoDoorR"" < 0.5 AND ((_vehicle getCargoIndex player) >= 0 )";
 				statement="this animateDoor [""CargoDoorR"",1];";
 			};
 			class CloseRdoor
@@ -277,7 +277,7 @@ class CfgVehicles
 				radius=3.7;
 				onlyForplayer=false;
                 priority = 0;					
-				condition="this doorPhase ""CargoDoorR"" > 0.5 AND (alive this)";
+				condition="this doorPhase ""CargoDoorR"" > 0.5 AND ((_vehicle getCargoIndex player) >= 0 )";
 				statement="this animateDoor [""CargoDoorR"",0];";
 			};
 			class OpenLdoor
@@ -288,7 +288,7 @@ class CfgVehicles
 				radius=3.7;
 				onlyForplayer=false;
                 priority = 0;					
-				condition="this doorPhase ""CargoDoorL"" < 0.5 AND (alive this)";
+				condition="this doorPhase ""CargoDoorL"" < 0.5 AND ((_vehicle getCargoIndex player) >= 0 )";
 				statement="this animateDoor [""CargoDoorL"",1];";
 			};
 			class CloseLdoor
@@ -299,44 +299,64 @@ class CfgVehicles
 				radius=3.7;
 				onlyForplayer=false; 
                 priority = 0;				
-				condition="this doorPhase ""CargoDoorL"" > 0.5 AND (alive this)";
+				condition="this doorPhase ""CargoDoorL"" > 0.5 AND ((_vehicle getCargoIndex player) >= 0 )";
 				statement="this animateDoor [""CargoDoorL"",0];";				
 			};
 		};				
 		class MarkerLights
 		{
-			class GreenStill
+			class GreenStill 
 			{
 				name = "light_nav_right";
-				color[] = {0.006, 0.12, 0.006,1.0};
-				ambient[] = {0.01, 0.1, 0.01,1.0};
-				brightness = 0.001;
-				blinking = false;
-			};
-			class RedBlinking
+				color[] = {0.0, 0.8, 0.0};
+				ambient[] = {0.0, 0.08, 0.0};
+				intensity = 75;
+				drawLight = 1;
+				drawLightSize = 0.15;
+				drawLightCenterSize = 0.04;
+				activeLight = 0;
+				blinking = 0;
+				dayLight = 0;
+				useFlare = 0;
+			};	
+			class RedBlinking 
 			{
 				name = "light_nav_top";
-				color[]={1.0, 0.1, 0.1, 1};
-				ambient[]={0.1, 0.01, 0.01, 1};
-				brightness=0.01;
-				blinking = true;
+				color[] = {0.9, 0.15, 0.1};
+				ambient[] = {0.09, 0.015, 0.01};
+				intensity = 50;
+				blinking = 1;
+				blinkingPattern[] = {0.1, 0.9};
+				blinkingPatternGuarantee = 0;
+				drawLightSize = 0.2;
+				drawLightCenterSize = 0.04;
 			};
-			class RedStill
+			class RedStill 
 			{
-				name="light_nav_left";
-				color[]={0.24,0.006,0.006,1.0};
-				ambient[]={0.1,0.01,0.01,1.0};
-				brightness=0.001;
-				blinking=false;
-			};
-			class WhiteStill
+				name = "light_nav_left";
+				color[] = {0.8, 0.0, 0.0};
+				ambient[] = {0.08, 0.0, 0.0};
+				intensity = 75;
+				drawLight = 1;
+				drawLightSize = 0.15;
+				drawLightCenterSize = 0.04;
+				activeLight = 0;
+				blinking = 0;
+				dayLight = 0;
+				useFlare = 0;
+			};	
+			class WhiteStill 
 			{
-				name="light_nav_back";
-				color[]={0.0388,0.0388,0.0388,1.0};
-				ambient[]={0.1,0.01,0.01,1.0};
-				brightness=0.001;
-				blinking=false;
-			};
+				name = "light_nav_back";
+				color[] = {1.0, 1.0, 1.0};
+				ambient[] = {0.1, 0.1, 0.1};
+				blinking = 1;
+				intensity = 75;
+				blinkingPattern[] = {0.1, 0.9};
+				blinkingPatternGuarantee = 0;
+				drawLightSize = 0.2;
+				drawLightCenterSize = 0.04;
+			};	
 			
 		};			
 		class pilotCamera				/// camera for pilot to observe sling loading
@@ -379,11 +399,11 @@ class CfgVehicles
 		{
 			class MainTurret: MainTurret //Gunner
 			{
-				body = "obsTurret";
+				body = "MainTurret";
 				gunnerCompartments = "Compartment1";
-				gun = "obsGun";
-				animationSourceBody = "obsTurret";
-				animationSourceGun = "obsGun";
+				gun = "MainGun";
+				animationSourceBody = "MainTurret";
+				animationSourceGun = "MainGun";
 				stabilizedInAxes = 3;
 				gunnername = "Co-Pilot";
 				isCopilot = 1;			
@@ -604,16 +624,16 @@ class CfgVehicles
 				ambient[] = {70,75,100};
 				intensity = 50;
 				size = 1;
-				innerAngle = 5;
-				outerAngle = 75;
-				coneFadeCoef = 10;
+				innerAngle = 20;				/// angle from light direction vector where the light is at full strength
+				outerAngle = 135;				/// angle from light direction vector where the light is completely faded out
+				coneFadeCoef = 10;				/// coefficient of fading the light between inner and outer cone angles
 				position = "laserstart";
 				direction = "commanderview";
 				hitpoint = "glass11";
 				selection = "glass11";
 				useFlare = 1;
 				dayLight = 0;
-				FlareSize = 4;
+				FlareSize = 15;
 				class Attenuation
 				{
 					start = 0;
@@ -625,7 +645,7 @@ class CfgVehicles
 				};
 			};
 		};
-		/*class Exhausts
+		class Exhausts
 		{
 			class Exhaust1
 			{
@@ -639,7 +659,7 @@ class CfgVehicles
 				direction = "exhaust2_dir";
 				effect = "ExhaustEffectHeli";
 			};
-		};*/
+		};
 		// materials
 		class Damage
 		{
@@ -1678,6 +1698,9 @@ class CfgVehicles
 			};
 		};		
 	};
+///	
+/// NATO	
+///		
 ////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////AW159 BAF Wildcat Unarmed//////////////////////////
 ////////////////////////////////////////////////////////////////////////////////	
@@ -1833,5 +1856,188 @@ class CfgVehicles
 	        class CargoTurret_01: CargoTurret_01 {};
 	        class CargoTurret_02: CargoTurret_02 {};
 		};
-	};			
+	};	
+///	
+/// AAF	
+///	
+////////////////////////////////////////////////////////////////////////////////
+//////////////////////AW159 AAF Wildcat Unarmed (Green)/////////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Unarmed_Green_AAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 AAF Green Wildcat (Unarmed);
+		faction = "IND_F";	
+		crew = "I_helipilot_F";
+		typicalCargo[]={I_Soldier_lite_F,I_Soldier_lite_F};	
+		side = 2;		
+		hiddenSelections[] = {"camo1", "camo2"};
+		model = "\DEGA_Wildcats\AW159_BAF_unarmed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_unarmed_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_unarmed_ca.paa";		
+        hiddenSelectionsTextures[]={"\a3\air_f_epb\Heli_Light_03\data\heli_light_03_base_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};
+		_generalMacro = "DEGA_Wildcat_Unarmed_Green_AAF";			
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret {};
+			class CargoTurret_01: CargoTurret_01 {};
+			class CargoTurret_02: CargoTurret_02 {};						
+		};
+	};	
+////////////////////////////////////////////////////////////////////////////////
+//////////////////AW159 AAF Wildcat Hellfire Armed (Green)//////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Hellfire_Armed_Green_AAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 AAF Green Wildcat (Hellfire - Armed);
+		faction = "IND_F";	
+		crew = "I_helipilot_F";
+		typicalCargo[]={I_Soldier_lite_F,I_Soldier_lite_F};
+		side = 2;		
+		model = "\DEGA_Wildcats\AW159_BAF_Hellfire_armed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_ca.paa";
+		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
+		_generalMacro = "DEGA_Wildcat_Hellfire_Armed_Green_AAF";
+		memoryPointLMissile = "missile_1";
+ 		memoryPointRMissile = "missile_2";			
+		hiddenSelections[] = {"camo1", "camo2"};
+        hiddenSelectionsTextures[]={"\a3\air_f_epb\Heli_Light_03\data\heli_light_03_base_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};			
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret //Gunner
+			{
+				weapons[] = {"Master_Arm_Safe_US_Helos_Kimi",  "Laserdesignator_mounted", "HellfireLauncherN", "HellfireLauncherL"};
+				magazines[] = {"Laserbatteries", "4Rnd_Hellfire_N", "4Rnd_Hellfire_L"};	
+	        };  	
+	        class CargoTurret_01: CargoTurret_01 {};
+	        class CargoTurret_02: CargoTurret_02 {};
+		};
+	};
+////////////////////////////////////////////////////////////////////////////////
+///////////////////AW159 AAF Wildcat Cannon Armed (Green)///////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Cannon_Armed_Green_AAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 AAF Green Wildcat (Cannon - Armed);
+		faction = "IND_F";	
+		crew = "I_helipilot_F";
+		typicalCargo[]={I_Soldier_lite_F,I_Soldier_lite_F};		
+		side = 2;		
+		model = "\DEGA_Wildcats\AW159_BAF_Cannon_armed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_ca.paa";
+		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
+		_generalMacro = "DEGA_Wildcat_Cannon_Armed_Green_AAF";	
+        selectionFireAnim = "zasleh";		
+		hiddenSelections[] = {"camo1", "camo2"};
+        hiddenSelectionsTextures[]={"\a3\air_f_epb\Heli_Light_03\data\heli_light_03_base_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};
+		class AnimationSources : AnimationSources
+		{
+			class ReloadMGAnim{source="reload";weapon="M621";};
+        };
+		weapons[] = {"Master_Arm_Safe_US_Helos_Kimi", "M621", "CRV7_PG_12rnd", "CMFlareLauncher"};
+		magazines[] = {"1200Rnd_20mm_M621", "12Rnd_CRV7", "120Rnd_CMFlare_Chaff_Magazine"};		
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret {};  	
+	        class CargoTurret_01: CargoTurret_01 {};
+	        class CargoTurret_02: CargoTurret_02 {};
+		};
+	};	
+////////////////////////////////////////////////////////////////////////////////
+////////////////////AW159 AAF Wildcat Unarmed (Digital)/////////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Unarmed_Digital_AAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 AAF Digital Wildcat (Unarmed);
+		faction = "IND_F";	
+		crew = "I_helipilot_F";
+		typicalCargo[]={I_Soldier_lite_F,I_Soldier_lite_F};	
+		side = 2;		
+		hiddenSelections[] = {"camo1", "camo2"};
+		model = "\DEGA_Wildcats\AW159_BAF_unarmed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_unarmed_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_unarmed_ca.paa";		
+        hiddenSelectionsTextures[]={"\a3\air_f_epb\Heli_Light_03\data\heli_light_03_base_indp_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};
+		_generalMacro = "DEGA_Wildcat_Unarmed_Digital_AAF";			
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret {};
+			class CargoTurret_01: CargoTurret_01 {};
+			class CargoTurret_02: CargoTurret_02 {};						
+		};
+	};	
+////////////////////////////////////////////////////////////////////////////////
+////////////////AW159 AAF Wildcat Hellfire Armed (Digital)//////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Hellfire_Armed_Digital_AAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 AAF Digital Wildcat (Hellfire - Armed);
+		faction = "IND_F";	
+		crew = "I_helipilot_F";
+		typicalCargo[]={I_Soldier_lite_F,I_Soldier_lite_F};
+		side = 2;		
+		model = "\DEGA_Wildcats\AW159_BAF_Hellfire_armed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_ca.paa";
+		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
+		_generalMacro = "DEGA_Wildcat_Hellfire_Armed_Digital_AAF";
+		memoryPointLMissile = "missile_1";
+ 		memoryPointRMissile = "missile_2";			
+		hiddenSelections[] = {"camo1", "camo2"};
+        hiddenSelectionsTextures[]={"\a3\air_f_epb\Heli_Light_03\data\heli_light_03_base_indp_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};			
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret //Gunner
+			{
+				weapons[] = {"Master_Arm_Safe_US_Helos_Kimi",  "Laserdesignator_mounted", "HellfireLauncherN", "HellfireLauncherL"};
+				magazines[] = {"Laserbatteries", "4Rnd_Hellfire_N", "4Rnd_Hellfire_L"};	
+	        };  	
+	        class CargoTurret_01: CargoTurret_01 {};
+	        class CargoTurret_02: CargoTurret_02 {};
+		};
+	};
+////////////////////////////////////////////////////////////////////////////////
+/////////////////AW159 AAF Wildcat Cannon Armed (Digital)///////////////////////
+////////////////////////////////////////////////////////////////////////////////	
+	class DEGA_Wildcat_Cannon_Armed_Digital_AAF: DEGA_Wildcat_Base
+	{
+	    author = "Deltagamer";
+        scope = 2;	
+		displayname = AW159 AAF Digital Wildcat (Cannon - Armed);
+		faction = "IND_F";	
+		crew = "I_helipilot_F";
+		typicalCargo[]={I_Soldier_lite_F,I_Soldier_lite_F};		
+		side = 2;		
+		model = "\DEGA_Wildcats\AW159_BAF_Cannon_armed";
+		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
+		icon = "\DEGA_Wildcats\data\UI\icon_lynx_ca.paa";
+		#include "\DEGA_Wildcats\Kimi\cfg_HMD_Lynx_Armed_Metric.hpp"
+		_generalMacro = "DEGA_Wildcat_Cannon_Armed_Digital_AAF";	
+        selectionFireAnim = "zasleh";		
+		hiddenSelections[] = {"camo1", "camo2"};
+        hiddenSelectionsTextures[]={"\a3\air_f_epb\Heli_Light_03\data\heli_light_03_base_indp_co.paa", "\DEGA_Wildcats\data\ah64d_details_co.paa"};
+		class AnimationSources : AnimationSources
+		{
+			class ReloadMGAnim{source="reload";weapon="M621";};
+        };
+		weapons[] = {"Master_Arm_Safe_US_Helos_Kimi", "M621", "CRV7_PG_12rnd", "CMFlareLauncher"};
+		magazines[] = {"1200Rnd_20mm_M621", "12Rnd_CRV7", "120Rnd_CMFlare_Chaff_Magazine"};		
+		class Turrets: Turrets
+		{
+			class MainTurret: MainTurret {};  	
+	        class CargoTurret_01: CargoTurret_01 {};
+	        class CargoTurret_02: CargoTurret_02 {};
+		};
+	};		
 };
