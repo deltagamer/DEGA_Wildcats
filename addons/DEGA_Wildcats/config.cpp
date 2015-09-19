@@ -43,6 +43,7 @@ class CfgVehicles
 //		expansion = 2; // BAF
 		scope = 1;
 		side = 1;
+		scopeCurator = 0;		// 2 means available from Zeus, whereas 0 means hidden		
 		faction = "BLU_F";
 		
 	    author = "Deltagamer";
@@ -266,7 +267,7 @@ class CfgVehicles
 				radius=3.7;
 				onlyForplayer=false;
                 priority = 0;					
-				condition="this doorPhase ""CargoDoorR"" < 0.5 AND ((_vehicle getCargoIndex player) >= 0 )";
+				condition="this doorPhase ""CargoDoorR"" < 0.5 AND ((this getCargoIndex player) isEqualTo 0)";
 				statement="this animateDoor [""CargoDoorR"",1];";
 			};
 			class CloseRdoor
@@ -277,7 +278,7 @@ class CfgVehicles
 				radius=3.7;
 				onlyForplayer=false;
                 priority = 0;					
-				condition="this doorPhase ""CargoDoorR"" > 0.5 AND ((_vehicle getCargoIndex player) >= 0 )";
+				condition="this doorPhase ""CargoDoorR"" > 0.5 AND ((this getCargoIndex player) isEqualTo 0)";
 				statement="this animateDoor [""CargoDoorR"",0];";
 			};
 			class OpenLdoor
@@ -288,7 +289,7 @@ class CfgVehicles
 				radius=3.7;
 				onlyForplayer=false;
                 priority = 0;					
-				condition="this doorPhase ""CargoDoorL"" < 0.5 AND ((_vehicle getCargoIndex player) >= 0 )";
+				condition="this doorPhase ""CargoDoorL"" < 0.5 AND ((this getCargoIndex player) isEqualTo 1)";
 				statement="this animateDoor [""CargoDoorL"",1];";
 			};
 			class CloseLdoor
@@ -299,7 +300,7 @@ class CfgVehicles
 				radius=3.7;
 				onlyForplayer=false; 
                 priority = 0;				
-				condition="this doorPhase ""CargoDoorL"" > 0.5 AND ((_vehicle getCargoIndex player) >= 0 )";
+				condition="this doorPhase ""CargoDoorL"" > 0.5 AND ((this getCargoIndex player) isEqualTo 1)";
 				statement="this animateDoor [""CargoDoorL"",0];";				
 			};
 		};				
@@ -1708,6 +1709,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden			
 		displayname = AW159 BAF Wildcat (Unarmed);
 		hiddenSelections[] = {"camo1", "camo2"};
 		model = "\DEGA_Wildcats\AW159_BAF_unarmed";
@@ -1729,6 +1731,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden			
 		displayname = AW159 BAF Wildcat (Hellfire - Armed);
 		model = "\DEGA_Wildcats\AW159_BAF_Hellfire_armed";
 		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
@@ -1757,6 +1760,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden			
 		displayname = AW159 BAF Wildcat (Cannon - Armed);
 		model = "\DEGA_Wildcats\AW159_BAF_Cannon_armed";
 		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
@@ -1786,6 +1790,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden
 		displayname = AW159 RDAF Wildcat (Unarmed);
 		hiddenSelections[] = {"camo1", "camo2"};
 		model = "\DEGA_Wildcats\AW159_BAF_unarmed";
@@ -1807,6 +1812,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden
 		displayname = AW159 RDAF Wildcat (Hellfire - Armed);
 		model = "\DEGA_Wildcats\AW159_BAF_Hellfire_armed";
 		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
@@ -1835,6 +1841,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden
 		displayname = AW159 RDAF Wildcat (Cannon - Armed);
 		model = "\DEGA_Wildcats\AW159_BAF_Cannon_armed";
 		picture = "\DEGA_Wildcats\data\UI\picture_lynx_ca.paa";
@@ -1867,6 +1874,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden
 		displayname = AW159 AAF Green Wildcat (Unarmed);
 		faction = "IND_F";	
 		crew = "I_helipilot_F";
@@ -1892,6 +1900,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden
 		displayname = AW159 AAF Green Wildcat (Hellfire - Armed);
 		faction = "IND_F";	
 		crew = "I_helipilot_F";
@@ -1924,6 +1933,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden
 		displayname = AW159 AAF Green Wildcat (Cannon - Armed);
 		faction = "IND_F";	
 		crew = "I_helipilot_F";
@@ -1956,7 +1966,8 @@ class CfgVehicles
 	class DEGA_Wildcat_Unarmed_Digital_AAF: DEGA_Wildcat_Base
 	{
 	    author = "Deltagamer";
-        scope = 2;	
+        scope = 2;
+        scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden		
 		displayname = AW159 AAF Digital Wildcat (Unarmed);
 		faction = "IND_F";	
 		crew = "I_helipilot_F";
@@ -1982,6 +1993,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden
 		displayname = AW159 AAF Digital Wildcat (Hellfire - Armed);
 		faction = "IND_F";	
 		crew = "I_helipilot_F";
@@ -2014,6 +2026,7 @@ class CfgVehicles
 	{
 	    author = "Deltagamer";
         scope = 2;	
+		scopeCurator = 2;		// 2 means available from Zeus, whereas 0 means hidden
 		displayname = AW159 AAF Digital Wildcat (Cannon - Armed);
 		faction = "IND_F";	
 		crew = "I_helipilot_F";
