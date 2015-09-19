@@ -1,4 +1,4 @@
-ChinookPack v1.7.5.5 How to use Advanced Features
+DEGA Wildcat v1.2.0.0 How to use Advanced Features
 
 
 
@@ -9,7 +9,6 @@ Wildcats Hellfires
 2 - AGM-114N Thermobaric Warhead (Laser Guided).
 
 
-/* Will come in next version
 Static Line Parachutes
 
 In order to use the static line parachutes you must consider the following: 
@@ -21,4 +20,3 @@ In order to use the static line parachutes you must consider the following:
 If done correctly all players in the cargo seat will see a Blue action near the bottom of 
 the action menu called 'Static Line Paradrop' This will eject the player with a T10 Parachute
 and safely land them keeping all of their gear and any backpacks they had equipped.
-*/

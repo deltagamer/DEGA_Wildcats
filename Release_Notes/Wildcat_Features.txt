@@ -1,4 +1,4 @@
-DEGA Wildcat v1.1.0.0 Features
+DEGA Wildcat v1.2.0.0 Features
 
 Ability to open and close side doors
 2x Passenger FFV
@@ -18,3 +18,4 @@ Turret Slaving
 Different Fire mode for rockets
 BAF versions
 RDAF versions
+AAF versions

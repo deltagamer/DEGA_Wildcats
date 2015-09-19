@@ -23,6 +23,7 @@ Features
 * Different Fire mode for rockets
 * BAF versions
 * RDAF versions
+* AAF versions
 
 Whats Planned
 =========
